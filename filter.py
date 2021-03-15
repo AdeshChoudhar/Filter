@@ -33,7 +33,6 @@ def mirror_reflection(inp):
 
 
 def water_reflection(inp):
-    shape = inp.shape
     out = inp[::-1]
     return out
 
@@ -72,12 +71,12 @@ def blur(inp):
         for j in range(shape[1]):
             b_blue, b_green, b_red = 0, 0, 0
             neighbors = 0
-            for k in range(-1, 2):
-                for l in range(-1, 2):
-                    if 0 <= (i + k) < shape[0] and 0 <= (j + l) < shape[1]:
-                        b_blue += inp[i + k][j + l][0]
-                        b_green += inp[i + k][j + l][1]
-                        b_red += inp[i + k][j + l][2]
+            for m in range(-1, 2):
+                for n in range(-1, 2):
+                    if 0 <= (i + m) < shape[0] and 0 <= (j + n) < shape[1]:
+                        b_blue += inp[i + m][j + n][0]
+                        b_green += inp[i + m][j + n][1]
+                        b_red += inp[i + m][j + n][2]
                         neighbors += 1
             b_blue /= neighbors
             b_green /= neighbors
