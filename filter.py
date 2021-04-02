@@ -1,9 +1,17 @@
-import numpy as np
+from numpy import zeros, uint8
+
+from helpers import *
+
+
+def apply_filter(inp, arg):
+    filter_functions = [grayscale, sepia, mirror_reflection, water_reflection, rotate_left, rotate_right,
+                        colour_inversion, blur]
+    return filter_functions[filter_arguments.index(arg)](inp)
 
 
 def grayscale(inp):
     shape = inp.shape
-    out = np.zeros(shape, dtype=np.uint8)
+    out = zeros(shape, dtype=uint8)
     for i in range(shape[0]):
         for j in range(shape[1]):
             avg = sum(inp[i][j]) / len(inp[i][j])
@@ -13,7 +21,7 @@ def grayscale(inp):
 
 def sepia(inp):
     shape = inp.shape
-    out = np.zeros(shape, dtype=np.uint8)
+    out = zeros(shape, dtype=uint8)
     for i in range(shape[0]):
         for j in range(shape[1]):
             blue, green, red = inp[i][j]
@@ -26,7 +34,7 @@ def sepia(inp):
 
 def mirror_reflection(inp):
     shape = inp.shape
-    out = np.zeros(shape, dtype=np.uint8)
+    out = zeros(shape, dtype=uint8)
     for i in range(shape[0]):
         out[i] = inp[i][::-1]
     return out
@@ -39,7 +47,7 @@ def water_reflection(inp):
 
 def rotate_left(inp):
     shape = inp.shape
-    out = np.zeros((shape[1], shape[0], shape[2]), dtype=np.uint8)
+    out = zeros((shape[1], shape[0], shape[2]), dtype=uint8)
     for i in range(shape[1]):
         for j in range(shape[0]):
             out[i][j] = inp[j][i]
@@ -48,16 +56,16 @@ def rotate_left(inp):
 
 def rotate_right(inp):
     shape = inp.shape
-    out = np.zeros((shape[1], shape[0], shape[2]), dtype=np.uint8)
+    out = zeros((shape[1], shape[0], shape[2]), dtype=uint8)
     for i in range(shape[1]):
         for j in range(shape[0]):
             out[i][shape[0] - 1 - j] = inp[j][i]
     return out
 
 
-def bgr_to_rgb(inp):
+def colour_inversion(inp):
     shape = inp.shape
-    out = np.zeros(shape, dtype=np.uint8)
+    out = zeros(shape, dtype=uint8)
     for i in range(shape[0]):
         for j in range(shape[1]):
             out[i][j] = inp[i][j][::-1]
@@ -66,7 +74,7 @@ def bgr_to_rgb(inp):
 
 def blur(inp):
     shape = inp.shape
-    out = np.zeros(shape, dtype=np.uint8)
+    out = zeros(shape, dtype=uint8)
     for i in range(shape[0]):
         for j in range(shape[1]):
             b_blue, b_green, b_red = 0, 0, 0
