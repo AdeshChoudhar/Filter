@@ -1,7 +1,7 @@
 from sys import argv
 from cv2 import imread, imshow, waitKey
 
-from filter import *
+from filters import *
 
 if __name__ == "__main__":
     filters = argv[2:]
@@ -13,7 +13,11 @@ if __name__ == "__main__":
 
     output_img = input_img
     for i in filters:
-        output_img = apply_filter(output_img, i)
+        f = get_filter(i)
+        print(f"Applying '{' '.join(list(map(str.capitalize, (f.__name__.split('_')))))}'...")
+        output_img = f(output_img)
+    print("Done.")
+
     imshow("output", output_img)
 
     waitKey(0)

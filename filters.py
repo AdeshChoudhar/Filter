@@ -3,12 +3,6 @@ from numpy import zeros, uint8
 from helpers import *
 
 
-def apply_filter(inp, arg):
-    filter_functions = [grayscale, sepia, mirror_reflection, water_reflection, rotate_left, rotate_right,
-                        colour_inversion, blur]
-    return filter_functions[filter_arguments.index(arg)](inp)
-
-
 def grayscale(inp):
     shape = inp.shape
     out = zeros(shape, dtype=uint8)
@@ -91,3 +85,11 @@ def blur(inp):
             b_red /= neighbors
             out[i][j] = [int(b_blue), int(b_green), int(b_red)]
     return out
+
+
+filter_functions = [grayscale, sepia, mirror_reflection, water_reflection, rotate_left, rotate_right, colour_inversion,
+                    blur]
+
+
+def get_filter(arg):
+    return filter_functions[filter_arguments.index(arg)]
