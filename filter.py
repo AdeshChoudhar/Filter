@@ -3,6 +3,14 @@ from numpy import zeros, uint8
 from helpers import *
 
 
+def check_arguments(args):
+    filter_arguments = list(filters.keys())
+    for i in args:
+        if i not in filter_arguments:
+            return False
+    return True
+
+
 def grayscale(inp):
     shape = inp.shape
     out = zeros(shape, dtype=uint8)
@@ -87,9 +95,13 @@ def blur(inp):
     return out
 
 
-filter_functions = [grayscale, sepia, mirror_reflection, water_reflection, rotate_left, rotate_right, colour_inversion,
-                    blur]
-
-
-def get_filter(arg):
-    return filter_functions[filter_arguments.index(arg)]
+filters = {
+    "-gs": grayscale,
+    "-sp": sepia,
+    "-wr": water_reflection,
+    "-mr": mirror_reflection,
+    "-rl": rotate_left,
+    "-rr": rotate_right,
+    "-ci": colour_inversion,
+    "-bl": blur,
+}

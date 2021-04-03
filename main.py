@@ -1,19 +1,19 @@
 from sys import argv
 from cv2 import imread, imshow, waitKey
 
-from filters import *
+from filter import *
 
 if __name__ == "__main__":
-    filters = argv[2:]
-    if not check_arguments(filters):
+    args = argv[2:]
+    if not check_arguments(args):
         filter_help()
 
     input_img = imread(argv[1])
     imshow("input", input_img)
 
     output_img = input_img
-    for i in filters:
-        f = get_filter(i)
+    for i in args:
+        f = filters[i]
         print(f"Applying '{' '.join(list(map(str.capitalize, (f.__name__.split('_')))))}'...")
         output_img = f(output_img)
     print("Done.")
