@@ -1,0 +1,23 @@
+{% extends "filter/layout.html" %}
+{% block body %}
+  <div class="container p-5">
+    <div class="card text-center">
+      <div class="card-header">
+        Filter
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Image</h5>
+        <p class="card-text">You can select from folder or can drag-and-drop the image file</p>
+        <form method="POST" enctype="multipart/form-data" action="{% url 'filter:apply' %}" autocomplete="off">
+            {% csrf_token %}
+            {{ image_form }}
+            <br><br>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+      </div>
+      <div class="card-footer text-muted">
+        RPP-OOP Project
+      </div>
+    </div>
+  </div>
+{% endblock %}

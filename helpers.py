@@ -8,7 +8,7 @@ def filter_help():
 
     print()
     print("\t\t+----------------------------------------------+")
-    print("\t\t|    python main.py <image_path> -[filter]    |")
+    print("\t\t|    python main.py <image_path> -[filter]     |")
     print("\t\t+----------------------------------------------+")
 
     print("\nFILTERS:")
