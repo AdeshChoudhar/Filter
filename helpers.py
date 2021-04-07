@@ -23,4 +23,3 @@ def filter_help():
 
     print("\n* Multiple filters can be applied simultaneously!")
     print()
-    exit(1)

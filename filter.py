@@ -3,8 +3,12 @@ from numpy import zeros, uint8
 from helpers import *
 
 
-def check_arguments(args):
+def valid_arguments(args):
     filter_arguments = list(filters.keys())
+
+    if (args == []):
+        return False
+
     for i in args:
         if i not in filter_arguments:
             return False

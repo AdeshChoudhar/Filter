@@ -5,8 +5,9 @@ from filter import *
 
 if __name__ == "__main__":
     args = argv[2:]
-    if not check_arguments(args):
+    if not valid_arguments(args):
         filter_help()
+        exit(1)
 
     input_img = imread(argv[1])
     imshow("input", input_img)
