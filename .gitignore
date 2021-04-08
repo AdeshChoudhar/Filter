@@ -2,6 +2,7 @@
 *dist/
 *.eggs/
 *.egg-info/
+*__pycache__/
 *.pytest_cache/
 *.idea/
 venv/
