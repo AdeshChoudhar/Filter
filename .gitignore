@@ -1,2 +1,2 @@
-.idea/
-Filter/.idea
+*.idea/
+*__pycache__/

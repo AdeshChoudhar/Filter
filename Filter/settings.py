@@ -121,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'filter/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'filter/static/filter')

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import *
+from os import system, listdir, path
 
 
 # Create your views here.
@@ -11,8 +12,12 @@ def apply(request):
     if request.method == 'POST':
         image_form = ImageForm(request.POST, request.FILES)
         if image_form.is_valid():
+            folder = "filter/static/filter/images"
+            system(f"rm -rf {folder}")
             image_form.save()
-            return render(request, "filter/apply.html")
+            file_name = list(listdir(folder))[0]
+            src = path.join(folder, file_name)
+            return render(request, "filter/apply.html", {"src": src[6:]})
         else:
             return redirect("filter:index")
     return redirect("filter:index")
