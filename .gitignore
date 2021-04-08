@@ -1,2 +1,7 @@
+*build/
+*dist/
+*.eggs/
+*.egg-info/
+*.pytest_cache/
 *.idea/
-*__pycache__/
+venv/
