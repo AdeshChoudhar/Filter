@@ -1,5 +1,5 @@
 from sys import argv
-from cv2 import imread, imshow, waitKey
+from cv2 import imread, imshow, getWindowProperty, WND_PROP_VISIBLE, waitKey, destroyAllWindows
 
 from filter import *
 
@@ -21,4 +21,9 @@ if __name__ == "__main__":
 
     imshow("output", output_img)
 
-    waitKey(0)
+    wait_time = 1000
+    while getWindowProperty("output", WND_PROP_VISIBLE) >= 1:
+        key_code = waitKey(wait_time)
+        if (key_code & 0xFF) == 27:
+            destroyAllWindows()
+            break
