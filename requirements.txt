@@ -16,6 +16,7 @@ keyring==23.0.1
 numpy==1.20.2
 opencv-python==4.5.1.48
 packaging==20.9
+Pillow==8.2.0
 pkginfo==1.7.0
 pluggy==0.13.1
 py==1.10.0
