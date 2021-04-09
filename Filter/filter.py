@@ -199,8 +199,8 @@ class Apply:
                 #         b_red /= neighbors
                 #         output[i][j] = [int(b_blue), int(b_green), int(b_red)]
                 #
-                # self.name = "Edge"
-                # self.image = output
+                self.name = "Edge"
+                self.image = image
 
 
 def show(any_filter):
@@ -209,6 +209,6 @@ def show(any_filter):
     wait_time = 1000
     while getWindowProperty(any_filter.name, WND_PROP_VISIBLE) >= 1:
         key_code = waitKey(wait_time)
-        if (key_code & 0xFF) == ord("q"):
+        if (key_code & 0xFF) == 27:
             destroyAllWindows()
             break
