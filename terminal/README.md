@@ -1,3 +1,0 @@
-# Filter
-
-RPP-OOP Project
