@@ -1,3 +1,4 @@
+asgiref==3.3.4
 attrs==20.3.0
 bleach==3.3.0
 certifi==2020.12.5
@@ -5,6 +6,7 @@ cffi==1.14.5
 chardet==4.0.0
 colorama==0.4.4
 cryptography==3.4.7
+Django==3.2
 docutils==0.17
 idna==2.10
 importlib-metadata==3.10.0
@@ -22,12 +24,14 @@ Pygments==2.8.1
 pyparsing==2.4.7
 pytest==6.2.3
 pytest-runner==5.3.0
+pytz==2021.1
 readme-renderer==29.0
 requests==2.25.1
 requests-toolbelt==0.9.1
 rfc3986==1.4.0
 SecretStorage==3.3.1
 six==1.15.0
+sqlparse==0.4.1
 toml==0.10.2
 tqdm==4.60.0
 twine==3.4.1
