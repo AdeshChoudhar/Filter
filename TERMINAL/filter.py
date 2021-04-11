@@ -2,7 +2,7 @@ from os import system
 from numpy import zeros, uint8
 
 
-def filter_help():
+def guide():
     print()
 
     system("figlet -c help")
@@ -15,12 +15,14 @@ def filter_help():
     print("\nFILTERS:")
     print("\t\u2022 -gs: Grayscale")
     print("\t\u2022 -sp: Sepia")
+    print("\t\u2022 -ci: Colour Inversion")
+    print("\t\u2022 -sk: Sketch")
     print("\t\u2022 -mr: Mirror Reflection")
     print("\t\u2022 -wr: Water Reflection")
     print("\t\u2022 -rl: Rotate Left")
     print("\t\u2022 -rr: Rotate Right")
-    print("\t\u2022 -ci: Colour Inversion")
     print("\t\u2022 -bl: Blur")
+    print("\t\u2022 -eg: Edge")
 
     print("\n* Multiple filters can be applied simultaneously!")
     print()
@@ -61,6 +63,32 @@ def sepia(inp):
     return out
 
 
+def colour_inversion(inp):
+    shape = inp.shape
+    out = zeros(shape, dtype=uint8)
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            out[i][j] = inp[i][j][::-1]
+    return out
+
+
+def sketch(inp):
+    shape = inp.shape
+    out = zeros(shape, dtype=uint8)
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            avg = sum(inp[i][j]) / len(inp[i][j])
+            if avg > 192:
+                out[i][j] = [255, 255, 255]
+            elif avg > 128:
+                out[i][j] = [170, 170, 170]
+            elif avg > 64:
+                out[i][j] = [85, 85, 85]
+            else:
+                out[i][j] = [0, 0, 0]
+    return out
+
+
 def mirror_reflection(inp):
     shape = inp.shape
     out = zeros(shape, dtype=uint8)
@@ -79,7 +107,7 @@ def rotate_left(inp):
     out = zeros((shape[1], shape[0], shape[2]), dtype=uint8)
     for i in range(shape[1]):
         for j in range(shape[0]):
-            out[i][j] = inp[j][i]
+            output[i][j] = inp[j][shape[1] - 1 - i]
     return out
 
 
@@ -89,15 +117,6 @@ def rotate_right(inp):
     for i in range(shape[1]):
         for j in range(shape[0]):
             out[i][shape[0] - 1 - j] = inp[j][i]
-    return out
-
-
-def colour_inversion(inp):
-    shape = inp.shape
-    out = zeros(shape, dtype=uint8)
-    for i in range(shape[0]):
-        for j in range(shape[1]):
-            out[i][j] = inp[i][j][::-1]
     return out
 
 
@@ -122,13 +141,45 @@ def blur(inp):
     return out
 
 
+def edge(inp):
+    shape = inp.shape
+    gx = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]
+    gy = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]]
+
+    out = zeros(shape, dtype=uint8)
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            ex_blue, ex_green, ex_red = 0, 0, 0
+            ey_blue, ey_green, ey_red = 0, 0, 0
+
+            for m in range(-1, 2):
+                for n in range(-1, 2):
+                    if 0 <= (i + m) < shape[0] and 0 <= (j + n) < shape[1]:
+                        ex_blue += gx[m + 1][n + 1] * inp[i + m][j + n][0]
+                        ex_green += gx[m + 1][n + 1] * inp[i + m][j + n][1]
+                        ex_red += gx[m + 1][n + 1] * inp[i + m][j + n][2]
+
+                        ey_blue += gy[m + 1][n + 1] * inp[i + m][j + n][0]
+                        ey_green += gy[m + 1][n + 1] * inp[i + m][j + n][1]
+                        ey_red += gy[m + 1][n + 1] * inp[i + m][j + n][2]
+
+            e_blue = min(255, round((ex_blue ** 2 + ey_blue ** 2) ** 0.5))
+            e_green = min(255, round((ex_green ** 2 + ey_green ** 2) ** 0.5))
+            e_red = min(255, round((ex_red ** 2 + ey_red ** 2) ** 0.5))
+
+            out[i][j] = [int(e_blue), int(e_green), int(e_red)]
+    return out
+
+
 filters = {
     "-gs": grayscale,
     "-sp": sepia,
+    "-ci": colour_inversion,
+    "-sk": sketch,
     "-wr": water_reflection,
     "-mr": mirror_reflection,
     "-rl": rotate_left,
     "-rr": rotate_right,
-    "-ci": colour_inversion,
     "-bl": blur,
+    "-eg": edge,
 }

@@ -6,7 +6,7 @@ from filter import *
 if __name__ == "__main__":
     args = argv[2:]
     if not valid_arguments(args):
-        filter_help()
+        guide()
         exit(1)
 
     input_img = imread(argv[1])

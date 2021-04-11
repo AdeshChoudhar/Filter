@@ -1,7 +1,7 @@
 {% extends "filter/layout.html" %}
 {% block body %}
   <div class="container p-5 d-flex justify-content-center">
-    <div class="card text-center" style="width: 48rem;">
+    <div class="card text-center">
       <img class="card-img-top" src="{{ src }}" alt="Image">
       <div class="card-body">
         <p class="card-text">Image</p>
@@ -10,25 +10,56 @@
   </div>
 
   <div class="container">
-    <div class="row px-auto">
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Grayscale</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Sepia</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Mirror Reflection</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Water Reflection</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Rotate Left</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Rotate Right</button>
+    <div class="row">
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:grayscale' %}'">Grayscale
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:sepia' %}'">Sepia
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:inversion' %}'">Inversion
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:sketch' %}'">Sketch
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:mirror_reflection' %}'">Mirror Reflection
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:water_reflection' %}'">Water Reflection
+      </button>
     </div>
-    <div class="row px-auto">
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Colour Inversion</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Blur</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto">Edge Detection</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto" disabled>-</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto" disabled>-</button>
-      <button type="button" class="btn btn-outline-dark btn-lg col-2 my-1 mx-auto" disabled>-</button>
+    <div class="row">
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:rotate_left' %}'">Rotate Left
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:rotate_right' %}'">Rotate Right
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:blur' %}'">Blur
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:edge' %}'">Edge
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:index' %}'" disabled>-
+      </button>
+      <button type="submit" class="btn btn-outline-dark btn-lg col-2 p-3 my-1 mx-auto"
+              onclick="location.href='{% url 'filter:index' %}'" disabled>-
+      </button>
     </div>
-    <div class="row px-auto">
-      <button type="button" class="btn btn-outline-danger btn-lg col-6 my-1">Quit</button>
-      <button type="button" class="btn btn-outline-success btn-lg col-6 my-1">Save</button>
+    <div class="row">
+      <button type="submit" class="btn btn-outline-danger btn-lg col-4 p-3"
+              onclick="location.href='{% url 'filter:home' %}'">Home
+      </button>
+      <button type="submit" class="btn btn-outline-success btn-lg col-4 p-3"
+              onclick="location.href='{% url 'filter:save' %}'">Save
+      </button>
+      <button type="submit" class="btn btn-outline-primary btn-lg col-4 p-3"
+              onclick="location.href='{% url 'filter:download' %}'">Download
+      </button>
     </div>
   </div>
 {% endblock %}

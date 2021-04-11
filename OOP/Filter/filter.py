@@ -8,22 +8,8 @@ def guide():
 
     system("figlet -c help")
 
-    print()
-    print("\t\t+----------------------------------------------+")
-    print("\t\t|    python main.py <image_path> -[filter]    |")
-    print("\t\t+----------------------------------------------+")
+    # TODO
 
-    print("\nFILTERS:")
-    print("\t\u2022 -gs: Grayscale")
-    print("\t\u2022 -sp: Sepia")
-    print("\t\u2022 -mr: Mirror Reflection")
-    print("\t\u2022 -wr: Water Reflection")
-    print("\t\u2022 -rl: Rotate Left")
-    print("\t\u2022 -rr: Rotate Right")
-    print("\t\u2022 -ci: Colour Inversion")
-    print("\t\u2022 -bl: Blur")
-
-    print("\n* Multiple filters can be applied simultaneously!")
     print()
 
 
@@ -46,6 +32,7 @@ class Apply:
             self.Grayscale = self.Grayscale()
             self.Sepia = self.Sepia()
             self.Inversion = self.Inversion()
+            self.Sketch = self.Sketch()
 
         class Grayscale:
             def __init__(self, image: Image):
@@ -70,9 +57,12 @@ class Apply:
                 for i in range(shape[0]):
                     for j in range(shape[1]):
                         blue, green, red = image[i][j]
-                        s_blue = min(255, .272 * red + .534 * green + .131 * blue)
-                        s_green = min(255, .349 * red + .686 * green + .168 * blue)
-                        s_red = min(255, .393 * red + .769 * green + .189 * blue)
+                        s_blue = min(255, .272 * red + .534 *
+                                     green + .131 * blue)
+                        s_green = min(255, .349 * red + .686 *
+                                      green + .168 * blue)
+                        s_red = min(255, .393 * red + .769 *
+                                    green + .189 * blue)
                         output[i][j] = [int(s_blue), int(s_green), int(s_red)]
 
                 self.name = "Sepia"
@@ -91,12 +81,33 @@ class Apply:
                 self.name = "Inversion"
                 self.image = output
 
+        class Sketch:
+            def __init__(self, image: Image):
+                image = image.image
+                shape = image.shape
+
+                output = zeros(shape, dtype=uint8)
+                for i in range(shape[0]):
+                    for j in range(shape[1]):
+                        avg = sum(image[i][j]) / len(image[i][j])
+                        if avg > 192:
+                            output[i][j] = [255, 255, 255]
+                        elif avg > 128:
+                            output[i][j] = [170, 170, 170]
+                        elif avg > 64:
+                            output[i][j] = [85, 85, 85]
+                        else:
+                            output[i][j] = [0, 0, 0]
+
+                self.name = "Sketch"
+                self.image = output
+
     class Reflect:
         def __init__(self):
-            self.Horizontal = self.Horizontal()
-            self.Vertical = self.Vertical()
+            self.Mirror = self.Mirror()
+            self.Water = self.Water()
 
-        class Horizontal:
+        class Mirror:
             def __init__(self, image: Image):
                 image = image.image
                 shape = image.shape
@@ -105,16 +116,16 @@ class Apply:
                 for i in range(shape[0]):
                     output[i] = image[i][::-1]
 
-                self.name = "Horizontal"
+                self.name = "Mirror"
                 self.image = output
 
-        class Vertical:
+        class Water:
             def __init__(self, image: Image):
                 image = image.image
 
                 output = image[::-1]
 
-                self.name = "Vertical"
+                self.name = "Water"
                 self.image = output
 
     class Rotate:
@@ -130,7 +141,7 @@ class Apply:
                 output = zeros((shape[1], shape[0], shape[2]), dtype=uint8)
                 for i in range(shape[1]):
                     for j in range(shape[0]):
-                        output[i][j] = image[j][i]
+                        output[i][j] = image[j][shape[1] - 1 - i]
 
                 self.name = "Left"
                 self.image = output
@@ -157,6 +168,7 @@ class Apply:
             def __init__(self, image: Image):
                 image = image.image
                 shape = image.shape
+
                 output = zeros(shape, dtype=uint8)
                 for i in range(shape[0]):
                     for j in range(shape[1]):
@@ -181,26 +193,34 @@ class Apply:
             def __init__(self, image):
                 image = image.image
                 shape = image.shape
+                gx = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]
+                gy = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]]
 
-                # output = zeros(shape, dtype=uint8)
-                # for i in range(shape[0]):
-                #     for j in range(shape[1]):
-                #         b_blue, b_green, b_red = 0, 0, 0
-                #         neighbors = 0
-                #         for m in range(-1, 2):
-                #             for n in range(-1, 2):
-                #                 if 0 <= (i + m) < shape[0] and 0 <= (j + n) < shape[1]:
-                #                     b_blue += image[i + m][j + n][0]
-                #                     b_green += image[i + m][j + n][1]
-                #                     b_red += image[i + m][j + n][2]
-                #                     neighbors += 1
-                #         b_blue /= neighbors
-                #         b_green /= neighbors
-                #         b_red /= neighbors
-                #         output[i][j] = [int(b_blue), int(b_green), int(b_red)]
-                #
+                output = zeros(shape, dtype=uint8)
+                for i in range(shape[0]):
+                    for j in range(shape[1]):
+                        ex_blue, ex_green, ex_red = 0, 0, 0
+                        ey_blue, ey_green, ey_red = 0, 0, 0
+
+                        for m in range(-1, 2):
+                            for n in range(-1, 2):
+                                if 0 <= (i + m) < shape[0] and 0 <= (j + n) < shape[1]:
+                                    ex_blue += gx[m + 1][n + 1] * image[i + m][j + n][0]
+                                    ex_green += gx[m + 1][n + 1] * image[i + m][j + n][1]
+                                    ex_red += gx[m + 1][n + 1] * image[i + m][j + n][2]
+
+                                    ey_blue += gy[m + 1][n + 1] * image[i + m][j + n][0]
+                                    ey_green += gy[m + 1][n + 1] * image[i + m][j + n][1]
+                                    ey_red += gy[m + 1][n + 1] * image[i + m][j + n][2]
+
+                        e_blue = min(255, round((ex_blue ** 2 + ey_blue ** 2) ** 0.5))
+                        e_green = min(255, round((ex_green ** 2 + ey_green ** 2) ** 0.5))
+                        e_red = min(255, round((ex_red ** 2 + ey_red ** 2) ** 0.5))
+
+                        output[i][j] = [int(e_blue), int(e_green), int(e_red)]
+
                 self.name = "Edge"
-                self.image = image
+                self.image = output
 
 
 def show(any_filter):

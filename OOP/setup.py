@@ -7,8 +7,7 @@ setup(
     description='Filter',
     author='AdeshChoudhar',
     license='MIT',
-    install_requires=['opencv-python', 'numpy'],
-    setup_requires=['pytest-runner'],
+    install_requires=['opencv-python', 'Pillow', 'numpy',],
     tests_require=['pytest'],
     test_suite='tests',
 )
