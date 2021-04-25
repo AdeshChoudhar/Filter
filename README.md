@@ -33,13 +33,14 @@ Edge | ![edge](./media/images/edge.bmp)
 
 ## PPT
 
-[Filter](./media/Filter.pptx)
+[Filter](./Filter.pptx)
 
 ## Mentor
 
 Sheetal Rathod Ma'am
 
-## Author
+## Authors
 
-Adesh Shahadeo Choudhar<br>
-MIS: 111903008
+- Aakanksha Sonawane: 111903001
+- Adesh Choudhar: 111903008
+- Akanksha Desai: 111903011
