@@ -2,11 +2,11 @@
 
 ## RPP-OOP Mini Project
 
-Filter is a project written in Python.<br>
-It basically inputs an image from the user and apply various kinds of image filtration algorithms and maneuvers on them desired by the user and give us the resulting image.<br>
-This project repository contains all the phases of progress in the way it is being developed.
+```Filter``` is a project written mainly in Python.<br>
+It takes an image as input from the user and applies various kinds of image filtration algorithms and maneuvers on them desired by the user, then gives back the resulting image.<br>
+This repository contains all the phases of the project in the way it is developing. [DJANGO](./DJANGO) is the latest phase. <br>
 
-## Filter images
+## Examples
 
 Input Image
 
@@ -27,9 +27,9 @@ Edge | ![edge](./media/images/edge.bmp)
 
 ## 3 Phases
 
-- [<b>TERMINAL</b>](./TERMINAL): Simple Python application which takes input image and filters through CLAs.
-- [<b>OOP</b>](./OOP): 'OOP'ified the TERMINAL application and created a Python library from it. 
-- [<b>DJANGO</b>](./DJANGO): A website written using the famous Python framework django.
+- [TERMINAL](./TERMINAL): A simple Python application that takes images and filters through CLAs.
+- [OOP](./OOP): 'OOP'ified the TERMINAL application and created a Python library from it. 
+- [DJANGO](./DJANGO): A website created using a Python framework ```django```.
 
 ## PPT
 
