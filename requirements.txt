@@ -6,7 +6,7 @@ cffi==1.14.5
 chardet==4.0.0
 colorama==0.4.4
 cryptography==3.4.7
-Django==3.2
+Django==3.2.4
 docutils==0.17
 idna==2.10
 importlib-metadata==3.10.0
