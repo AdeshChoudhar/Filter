@@ -1,8 +1,16 @@
-*build
-*dist
-*db.sqlite3
-*.egg-info
-*.eggs
+# IDE
+.idea/
+.vscode/
+
+# Others
 *__pycache__/
-*pytest_cache
+/DJANGO/db.sqlite3
+/DJANGO/migrations/
+/OOP/.eggs/
+/OOP/.egg-info/
+/OOP/.pytest_cache/
+/OOP/Filter.egg-info/
+/OOP/build/
+/OOP/dist/
+/OOP/tests/
 venv/

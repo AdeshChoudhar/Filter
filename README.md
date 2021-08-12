@@ -2,45 +2,55 @@
 
 ## RPP-OOP Mini Project
 
-Filter is a project written in Python.<br>
-It basically inputs an image from the user and apply various kinds of image filtration algorithms and maneuvers on them desired by the user and give us the resulting image.<br>
-This project repository contains all the phases of progress in the way it is being developed.
+Filter is a web application made using `django`.  
+Accepts an image from the user, applies various image filtration algorithms on them desired by the user, then gives back
+the resulting image.  
+This project repository contains all the phases of progress. [DJANGO](./DJANGO) is the latest phase.
 
 ## Filter images
 
-Input Image
+**Input Image**
 
-![input](./media/images/input.bmp)
+![input](./media/input.bmp)
 
-Filters | Output Image
+Grayscale | Sepia |
 ------- | ------------
-Grayscale | ![grayscale](./media/images/grayscale.bmp)
-Sepia | ![sepia](./media/images/sepia.bmp)
-Colour Inversion | ![colour_inversion](./media/images/colour_inversion.bmp)
-Sketch | ![sketch](./media/images/sketch.bmp)
-Mirror Reflection | ![mirror_reflection](./media/images/mirror_reflection.bmp)
-Water Reflection | ![water_reflection](./media/images/water_reflection.bmp)
-Rotate Left | ![rotate_left](./media/images/rotate_left.bmp)
-Rotate Right | ![rotate_right](./media/images/rotate_right.bmp)
-Blur | ![blur](./media/images/blur.bmp)
-Edge | ![edge](./media/images/edge.bmp)
+![grayscale](./media/grayscale.bmp) | ![sepia](./media/sepia.bmp)
+
+Colour Inversion | Sketch |
+------- | ------------
+![colour_inversion](./media/colour_inversion.bmp) | ![sketch](./media/sketch.bmp)
+
+Mirror Reflection | Water Reflection |
+------- | ------------
+![mirror_reflection](./media/mirror_reflection.bmp) | ![water_reflection](./media/water_reflection.bmp)
+
+Rotate Left | Rotate Right |
+------- | ------------
+![rotate_left](./media/rotate_left.bmp) | !![rotate_right](./media/rotate_right.bmp)
+
+Blur | Edge |
+------- | ------------
+![blur](./media/blur.bmp) | ![edge](./media/edge.bmp)
 
 ## 3 Phases
 
-- [<b>TERMINAL</b>](./TERMINAL): Simple Python application which takes input image and filters through CLAs.
-- [<b>OOP</b>](./OOP): 'OOP'ified the TERMINAL application and created a Python library from it. 
-- [<b>DJANGO</b>](./DJANGO): A website written using the famous Python framework django.
-
-## PPT
-
-[Filter](./Filter.pptx)
+- [**TERMINAL**](./TERMINAL): Simple Python programs which take an image and various filters through CLAs.
+- [**OOP**](./OOP): 'OOP'ified the TERMINAL application and created a Python library from it.
+- [**DJANGO**](./DJANGO): Developed a web application using Django, a Python framework.
 
 ## Mentor
 
-Sheetal Rathod Ma'am
+Asst. Prof. Sheetal Rathod
 
 ## Authors
 
 - Aakanksha Sonawane: 111903001
 - Adesh Choudhar: 111903008
 - Akanksha Desai: 111903011
+
+## References
+
+- https://cs50.harvard.edu/x/2020/psets/4/
+- https://packaging.python.org/tutorials/packaging-projects/
+- https://docs.djangoproject.com/en/3.2/
