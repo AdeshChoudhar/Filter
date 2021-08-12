@@ -7,7 +7,7 @@ Accepts an image from the user, applies various image filtration algorithms on t
 the resulting image.  
 This project repository contains all the phases of progress. [DJANGO](./DJANGO) is the latest phase.
 
-## Filter images
+## Examples
 
 **Input Image**
 
@@ -29,6 +29,7 @@ Rotate Left | Rotate Right |
 ------- | ------------
 ![rotate_left](./media/rotate_left.bmp) | !![rotate_right](./media/rotate_right.bmp)
 
+<<<<<<< HEAD
 Blur | Edge |
 ------- | ------------
 ![blur](./media/blur.bmp) | ![edge](./media/edge.bmp)
