@@ -1,11 +1,11 @@
-# Filter: DJANGO
+# Filter: TERMINAL
 
 ## How to use?
 
-- Change your directory to `DJANGO`.
+- Change your directory to `TERMINAL`.
 
 ```
-cd DJANGO
+cd TERMINAL
 ```
 
 - Optionally, create a virtual environment using pip and venv.

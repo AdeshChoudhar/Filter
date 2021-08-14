@@ -28,7 +28,7 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-- Now copy the link shown in your terminal, paste it in your browser and append `/filter/`, then hit enter. You should
+- Now copy the link shown in your terminal, paste it in your browser and append `filter/`, then hit enter. You should
   be able to see the index page of `Filter` as shown below.
   ![index_page](../media/index_page.png)
 
