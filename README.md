@@ -1,46 +1,46 @@
 # Filter
 
-## RPP-OOP Mini Project
+## RPP-OOP mini project
 
-Filter is a project written in Python.<br>
-It basically inputs an image from the user and apply various kinds of image filtration algorithms and maneuvers on them desired by the user and give us the resulting image.<br>
-This project repository contains all the phases of progress in the way it is being developed.
+Filter is a django application, that uses various algorithms and manipulations applied as a filter on the input image.
+This project repository contains all the phases of progress. DJANGO is the latest phase.
 
-## Filter images
+## How to use?
 
-Input Image
+- [TERMINAL](./TERMINAL/README.md)
+- [OOP](./OOP/README.md)
+- [DJANGO](./DJANGO/README.md)
 
-![input](./media/images/input.bmp)
+## Illustrative examples
 
-Filters | Output Image
-------- | ------------
-Grayscale | ![grayscale](./media/images/grayscale.bmp)
-Sepia | ![sepia](./media/images/sepia.bmp)
-Colour Inversion | ![colour_inversion](./media/images/colour_inversion.bmp)
-Sketch | ![sketch](./media/images/sketch.bmp)
-Mirror Reflection | ![mirror_reflection](./media/images/mirror_reflection.bmp)
-Water Reflection | ![water_reflection](./media/images/water_reflection.bmp)
-Rotate Left | ![rotate_left](./media/images/rotate_left.bmp)
-Rotate Right | ![rotate_right](./media/images/rotate_right.bmp)
-Blur | ![blur](./media/images/blur.bmp)
-Edge | ![edge](./media/images/edge.bmp)
+<details>
 
-## 3 Phases
+| Grayscale                           | Sepia                       |
+| ----------------------------------- | --------------------------- |
+| ![grayscale](./media/grayscale.bmp) | ![sepia](./media/sepia.bmp) |
 
-- [<b>TERMINAL</b>](./TERMINAL): Simple Python application which takes input image and filters through CLAs.
-- [<b>OOP</b>](./OOP): 'OOP'ified the TERMINAL application and created a Python library from it. 
-- [<b>DJANGO</b>](./DJANGO): A website written using the famous Python framework django.
+| Colour Inversion                                  | Sketch                        |
+| ------------------------------------------------- | ----------------------------- |
+| ![colour_inversion](./media/colour_inversion.bmp) | ![sketch](./media/sketch.bmp) |
 
-## PPT
+| Mirror Reflection                                   | Water Reflection                                  |
+| --------------------------------------------------- | ------------------------------------------------- |
+| ![mirror_reflection](./media/mirror_reflection.bmp) | ![water_reflection](./media/water_reflection.bmp) |
 
-[Filter](./Filter.pptx)
+| Rotate Left                             | Rotate Right                              |
+| --------------------------------------- | ----------------------------------------- |
+| ![rotate_left](./media/rotate_left.bmp) | ![rotate_right](./media/rotate_right.bmp) |
+
+| Blur                      | Edge                      |
+| ------------------------- | ------------------------- |
+| ![blur](./media/blur.bmp) | ![edge](./media/edge.bmp) |
+
+</details>
 
 ## Mentor
 
-Sheetal Rathod Ma'am
+Asst. Prof. Sheetal Rathod
 
-## Authors
+## Reference
 
-- Aakanksha Sonawane: 111903001
-- Adesh Choudhar: 111903008
-- Akanksha Desai: 111903011
+- https://cs50.harvard.edu/x/2020/psets/4/
